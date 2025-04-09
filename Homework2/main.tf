@@ -17,7 +17,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true 
   availability_zone = each.value
   key_name = aws_key_pair.deployer.key_name
-  vpc_security_group_ids = [data.aws_security_group.allow_tls.id]
+  vpc_security_group_ids = [aws_security_group.sg_ohio.id]
   user_data = file("apache.sh")
 
   tags = { 
